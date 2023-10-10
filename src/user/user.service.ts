@@ -2,7 +2,7 @@ import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
-import { CreatorUserInput } from './dto/create-user.input';
+import { CreateUserInput } from './dto/create-user.input';
 
 @Injectable()
 export class UserService {
@@ -16,7 +16,7 @@ export class UserService {
         return users;
     }
 
-    async createUser(data: CreatorUserInput): Promise <User>{
+    async createUser(data: CreateUserInput): Promise <User>{
         const user = await this.UserRepository.create(data);
         const userSaved = await this.UserRepository.save(user); 
 
